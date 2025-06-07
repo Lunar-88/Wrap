@@ -7,20 +7,20 @@ function Footer() {
                 <img src="logos.png" alt="Logo" className="w-24 mx-auto scale-[3]" />
             </div>
             <div className="flex-1">
-                <h2 className="flex justify-center text-lg font-semibold mb-2 underline">Contact Us</h2>
-                <ul className="flex-col justify-center space-x-4">
-                    <li>Phone</li>
-                    <li>Email</li>
-                    <li>Address</li>
+                <h2 className="flex justify-center text-lg font-bold mb-2">Contact Us</h2>
+                <ul className=" list-none m-0 p-0 flex-col space-x-4">
+                    <li>Call us</li>
+                    <li>Whatsapp us</li>
+                    <li>Email us</li>
                 </ul>
             </div>
-            <div className="flex-1">
-                <h2 class="flex justify-center text-lg font-semibold mb-2 underline">Working hours</h2>
+            <div className="flex-1 mb-10">
+                <h2 class="flex justify-center text-lg font-bold mb-2 ">Working hours</h2>
                 <p class="flex justify-center space-x-4">Monday - Saturday</p>
             </div>
-            <div className="flex-1">
-                <h2 class="flex justify-center text-lg font-semibold mb-2 underline">Location</h2>
-                <p></p>
+            <div className="flex-1 mb-12">
+                <h2 class="flex justify-center text-lg font-bold mb-2 ">Location</h2>
+                <p>Mirema Drive, Nairobi</p>
             </div>
         </div>
         <div className=" bg-[#4A4A4A] flex flex-row items-center pt-3 pb-3 gap-60 justify-center">
