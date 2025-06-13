@@ -8,6 +8,7 @@ import Ourservices from './pages/Ourservices.jsx'
 import Media from './pages/Media.jsx'
 import FAQs from './pages/FAQs.jsx'
 import Contact from './pages/Contact.jsx'
+import BookingPage from './pages/BookingPage.jsx';
 import { Route, Routes } from 'react-router-dom'
 
 
@@ -21,6 +22,7 @@ function App() {
       <Route path="/media" element={<Media />} />
       <Route path="/faqs" element={<FAQs />} />
       <Route path="/contact" element={<Contact />} />
+      <Route path="/bookingPage" element={<BookingPage />} />
     </Routes>
     <Footer></Footer>
     </>

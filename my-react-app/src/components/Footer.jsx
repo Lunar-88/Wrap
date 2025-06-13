@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faWhatsapp, faFacebook,faInstagram,faTwitter,faTiktok, faYoutube,} from '@fortawesome/free-brands-svg-icons';
-import { faPhone, faEnvelope} from '@fortawesome/free-solid-svg-icons';
+import { faPhone, faEnvelope, faLocationDot} from '@fortawesome/free-solid-svg-icons';
 
 function Footer() {
   return (
@@ -27,7 +27,7 @@ function Footer() {
 
         <div className="flex-1 mb-6 md:mb-0">
           <h2 className="text-lg font-bold mb-2">Location</h2>
-          <p>Mirema Drive, Nairobi</p>
+          <a href=''><FontAwesomeIcon icon={faLocationDot} /></a> Mirema Drive, Nairobi
         </div>
 
         <div className="flex-1">

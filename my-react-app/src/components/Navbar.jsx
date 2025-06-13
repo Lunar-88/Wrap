@@ -1,6 +1,11 @@
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function Navbar() {
+  const navigate = useNavigate();
+  const handleBookingClick = () => {
+    navigate('/bookingPage');
+  };
   return (
     <div className="w-full bg-white mx-auto fixed top-0 z-50">
     <nav className="flex bg-white aria-label w-full justify-between items-center px-10 py-10 shadow-md mx-auto">
@@ -15,12 +20,14 @@ function Navbar() {
           <li><Link to="/FAQs" className="hover:text-white hover:bg-black px-4 py-2 rounded-md">FAQs</Link></li>
           <li><Link to="/Contact" className="hover:text-white hover:bg-black px-4 py-2 rounded-md">Contact</Link></li>
         </ul>
-       
-        <div className="bg-black hover:bg-slate-700 text-white px-4 py-2 rounded-md ">
-          <button className="font-semibold ">Book Now</button>
+
+        <div className="font-semibold bg-black hover:bg-slate-700 text-white px-4 py-2 rounded-md ">
+          <button onClick={() => navigate('/')} ></button>
+          <button onClick={handleBookingClick}>Book Now</button>
         </div>
+
     </nav>
-    </div>
+    </div> 
   );
 }
 
