@@ -1,19 +1,33 @@
-import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { Menu, X } from 'lucide-react'; // Icon package (optional)
 
 function Navbar() {
   const navigate = useNavigate();
+  const [isOpen, setIsOpen] = useState(false);
+
   const handleBookingClick = () => {
     navigate('/bookingPage');
+    setIsOpen(false); // Close menu after navigating
   };
+
+  const toggleMenu = () => setIsOpen(!isOpen);
+
   return (
-    <div className="w-full bg-white mx-auto fixed top-0 z-50">
-    <nav className="flex bg-white aria-label w-full justify-between items-center px-10 py-10 shadow-md mx-auto">
-       <div className="pl-10">
-         <img src="logos.png" alt="logo" className="h-10 w-10 scale-[8] ml-10"/>
-       </div>
-       
-       <ul className="flex space-x-12 gap-x-14 font-semibold text-lg w-100 justify-center items-center">
+    <div className="w-full bg-white fixed top-0 z-50 shadow-md">
+      <nav className="flex items-center justify-between px-6 py-4 max-w-screen-xl mx-auto">
+        {/* Logo */}
+        <div>
+          <img src="logos.png" alt="Company Logo" className="h-16 w-16  scale-[5] object-contain pl-4" />
+        </div>
+
+        {/* Hamburger Button */}
+        <button onClick={toggleMenu} className="md:hidden text-black focus:outline-none">
+          {isOpen ? <X size={28} /> : <Menu size={28} />}
+        </button>
+
+        {/* Desktop Menu */}
+        <ul className="hidden md:flex gap-10 font-semibold text-lg items-center">
           <li><Link to="/" className="hover:text-white hover:bg-black px-4 py-2 rounded-md">Home</Link></li>
           <li><Link to="/Ourservices" className="hover:text-white hover:bg-black px-4 py-2 rounded-md">Services</Link></li>
           <li><Link to="/Media" className="hover:text-white hover:bg-black px-4 py-2 rounded-md">Media</Link></li>
@@ -21,13 +35,36 @@ function Navbar() {
           <li><Link to="/Contact" className="hover:text-white hover:bg-black px-4 py-2 rounded-md">Contact</Link></li>
         </ul>
 
-        <div className="font-semibold bg-black hover:bg-slate-700 text-white px-4 py-2 rounded-md ">
-          <button onClick={() => navigate('/')} ></button>
-          <button onClick={handleBookingClick}>Book Now</button>
+        {/* Desktop Button */}
+        <div className="hidden md:block">
+          <button
+            onClick={handleBookingClick}
+            className="bg-black hover:bg-gray-700 text-white px-5 py-2 rounded-md font-semibold"
+          >
+            Book Now
+          </button>
         </div>
+      </nav>
 
-    </nav>
-    </div> 
+      {/* Mobile Menu */}
+      {isOpen && (
+        <div className="md:hidden bg-white px-6 pb-4 shadow-md">
+          <ul className="flex flex-col gap-4 font-semibold text-lg">
+            <li><Link to="/" onClick={toggleMenu}>Home</Link></li>
+            <li><Link to="/Ourservices" onClick={toggleMenu}>Services</Link></li>
+            <li><Link to="/Media" onClick={toggleMenu}>Media</Link></li>
+            <li><Link to="/FAQs" onClick={toggleMenu}>FAQs</Link></li>
+            <li><Link to="/Contact" onClick={toggleMenu}>Contact</Link></li>
+            <li>
+              <button
+                onClick={handleBookingClick}
+                className="bg-black hover:bg-gray-700 text-white px-5 py-2 rounded-md font-semibold w-full text-left">Book Now
+              </button>
+            </li>
+          </ul>
+        </div>
+      )}
+    </div>
   );
 }
 
