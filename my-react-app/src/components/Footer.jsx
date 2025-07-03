@@ -5,7 +5,7 @@ import { faPhone, faEnvelope, faLocationDot} from '@fortawesome/free-solid-svg-i
 function Footer() {
   return (
     <footer className="text-white">
-  <div className="container mx-auto flex flex-col md:flex-row bg-[#4A4A4A] pt-6 pb-10 px-4 text-center md:text-left gap-6 md:gap-12">
+  <div className="container mx-auto flex flex-col md:flex-row bg-[#4A4A4A] pt-6 pb-12 px-4 text-center md:text-left gap-6 md:gap-12">
     
     {/* Logo */}
     <div className="flex-1 mb-6 md:mb-0">

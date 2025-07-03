@@ -48,7 +48,7 @@ function Navbar() {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden bg-white px-6 pb-4 shadow-md">
+        <div className="bg-white px-6 pb-4 shadow-md right-0 absolute ">
           <ul className="flex flex-col gap-4 font-semibold text-lg">
             <li><Link to="/" onClick={toggleMenu}>Home</Link></li>
             <li><Link to="/Ourservices" onClick={toggleMenu}>Services</Link></li>
