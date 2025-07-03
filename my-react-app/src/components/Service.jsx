@@ -31,25 +31,21 @@ function Service({ onNext, onBack }) {
     return (
         <div className="min-h-screen bg-gray-100">
             <h1 className="text-2xl font-bold text-center py-8">Book Now</h1>
-            
             <div className="flex flex-col items-center justify-center">
                 <form 
                     onSubmit={handleSubmit} 
-                    className="w-full max-w-md bg-white p-8 rounded-lg shadow-md"
+                    className="w-full max-w-md bg-white p-32 rounded-lg shadow-md"
                 >
-                    <h2 className="text-xl font-semibold mb-6 text-center">Select Your Service</h2>
+                    <h2 className="text-xl font-semibold mb-6 text-center">Select a Service</h2>
                     
-                    <div className="mb-6">
-                        <label htmlFor="service" className="block text-sm font-medium text-gray-700 mb-2">
-                            Service Type
-                        </label>
+                    <div className="mb-16">
                         <select
                             id="service"
                             name="service"
                             value={formData.service}
                             onChange={handleChange}
                             required
-                            className="w-full p-3 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+                            className=" p-2 w-full border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
                         >
                             <option value="">Select a Service</option>
                             {services.map((service, index) => (
@@ -64,14 +60,14 @@ function Service({ onNext, onBack }) {
                         <button
                             type="button"
                             onClick={onBack}
-                            className="px-4 py-2 bg-gray-300 text-gray-800 rounded-md hover:bg-gray-400 transition-colors"
+                            className="px-4 py-2 bg-black text-white rounded-md hover:bg-gray-700 transition-colors"
                         >
                             Back
                         </button>
                         <button
                             type="submit"
                             disabled={!formData.service}
-                            className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                            className="px-4 py-2 bg-black text-white rounded-md hover:bg-gray-700 "
                         >
                             Next
                         </button>

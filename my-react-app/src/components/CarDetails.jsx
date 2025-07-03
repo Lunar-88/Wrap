@@ -55,16 +55,13 @@ function CarDetails({ onNext }) {
     return (
         <div>
             <h1 className="text-2xl font-bold text-center p-10">Book Now</h1>
-            <div className="flex flex-col items-center justify-center bg-gray-100">
-                <form onSubmit={handleSubmit} className="flex flex-col items-center bg-white p-10 rounded shadow-md w-full max-w-md">
+            <div className="flex flex-col items-center justify-center bg-gray-100 ">
+                <form onSubmit={handleSubmit} className="flex flex-col items-center bg-white p-32 rounded shadow-md w-full max-w-md">
                     {error && (
                         <div className="mb-4 text-red-500 text-sm">{error}</div>
                     )}
                     
                     <div className="mb-4 w-full">
-                        <label htmlFor="type" className="block text-sm font-medium text-gray-700 mb-1">
-                            Car Type
-                        </label>
                         <select
                             id="type"
                             name="type"
@@ -81,9 +78,6 @@ function CarDetails({ onNext }) {
                     </div>
                     
                     <div className="mb-4 w-full">
-                        <label htmlFor="brand" className="block text-sm font-medium text-gray-700 mb-1">
-                            Car Brand
-                        </label>
                         <select
                             id="brand"
                             name="brand"
@@ -100,9 +94,6 @@ function CarDetails({ onNext }) {
                     </div>
 
                     <div className="mb-6 w-full">
-                        <label htmlFor="model" className="block text-sm font-medium text-gray-700 mb-1">
-                            Car Model
-                        </label>
                         <select
                             id="model"
                             name="model"
