@@ -52,7 +52,7 @@ function BookingPage() {
         {step === 2 && (
           <Service 
             onNext={(data) => {
-              updateBookingData({ service: data });
+              updateBookingData(data);
               goNext();
             }}
             onBack={goBack}

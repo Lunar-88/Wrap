@@ -2,7 +2,7 @@
 import React from 'react';
 
 function Summary({ bookingData, onBack, onSubmit }) {
-  const { carDetails, service, date, ownerDetails } = bookingData;
+  const { carDetails, service,wrapColor, date, ownerDetails } = bookingData;
 
   return (
     <div className="bg-white p-8 rounded shadow-md max-w-lg w-full">
@@ -13,6 +13,13 @@ function Summary({ bookingData, onBack, onSubmit }) {
           <h3 className="font-semibold">Service:</h3>
           <p>{service}</p>
         </div>
+        {service === "Vinyl wrap" && wrapColor && (
+            <div>
+             <h3 className="font-semibold">Wrap Color:</h3>
+             <p>{wrapColor}</p>
+            </div>
+        )}
+
         <div>
           <h3 className="font-semibold">Car Details:</h3>
           <p>Type: {carDetails?.type}</p>
