@@ -49,20 +49,19 @@ function Service({ onNext, onBack }) {
     (formData.service === "Vinyl wrap" && !formData.wrapColor);
 
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="min-h-screen  bg-gray-100">
       <h1 className="text-2xl font-bold text-center py-8">Book Now</h1>
 
-      <div className="flex flex-col items-center justify-center">
+      <div className="flex  flex-col items-center justify-center">
         <form
           onSubmit={handleSubmit}
-          className="w-full max-w-md bg-white px-10 py-16 rounded-lg shadow-md"
+          className="w-screen max-w-md bg-white py-8 px-4 rounded-lg shadow-md"
         >
           <h2 className="text-xl font-semibold mb-6 text-center">
             Select a Service
           </h2>
 
-          {/* Service Select */}
-          <div className="mb-6">
+          <div className="pt-6 mb-6">
             <select
               id="service"
               name="service"

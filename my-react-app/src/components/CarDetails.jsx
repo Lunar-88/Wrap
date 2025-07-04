@@ -74,7 +74,7 @@ function CarDetails({ onNext }) {
         <div>
             <h1 className="text-2xl font-bold text-center p-10">Book Now</h1>
             <div className="flex flex-col items-center justify-center bg-gray-100 ">
-                <form onSubmit={handleSubmit} className="flex flex-col items-center bg-slate-200 p-24  rounded shadow-md w-screen max-w-md">
+                <form onSubmit={handleSubmit} className=" flex flex-col items-center bg-white pt-14 pb-2 px-5  rounded shadow-md w-screen max-w-md">
                     {error && (
                         <div className="mb-4 text-red-500 text-sm">{error}</div>
                     )}
