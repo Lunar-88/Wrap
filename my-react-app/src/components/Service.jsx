@@ -80,7 +80,6 @@ function Service({ onNext, onBack }) {
             </select>
           </div>
 
-          {/* Navigation Buttons */}
           <div className="flex justify-between mt-8">
             <button
               type="button"
@@ -105,7 +104,7 @@ function Service({ onNext, onBack }) {
 
         {/* Show swatches only if Vinyl wrap is selected */}
         {formData.service === "Vinyl wrap" && (
-          <div className="mt-10 w-full max-w-6xl px-4">
+          <div className="mt-10 max-w-screen-md w-full">
             <WrapColorSwatches
               selectedColor={formData.wrapColor}
               onSelect={(color) =>

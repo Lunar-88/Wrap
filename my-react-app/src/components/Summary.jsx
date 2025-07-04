@@ -45,9 +45,9 @@ function Summary({ bookingData, onBack, onSubmit }) {
         </button>
         <button
           onClick={onSubmit}
-          className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700"
+          className="px-4 py-2 bg-black text-white rounded hover:bg-slate-700"
         >
-          Confirm & Submit
+          Confirm Booking
         </button>
       </div>
     </div>

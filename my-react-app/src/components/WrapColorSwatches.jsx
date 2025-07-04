@@ -143,40 +143,41 @@ const wrapColors = [
     finish: "Matte Metallic",
   },
 ];
-
-
 function WrapColorSwatches({ selectedColor, onSelect }) {
-  return (
-    <div className="p-6">
-      <h2 className="text-2xl font-semibold mb-4 text-center">Available Wrap Colors</h2>
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
-        {wrapColors.map((color) => {
-          const isSelected = selectedColor === color.name;
 
-          return (
-            <button
-              key={color.code}
-              type="button"
-              onClick={() => onSelect(color.name)}
-              className={`flex flex-col items-center text-center p-4 border rounded-lg transition focus:outline-none ${
-                isSelected
-                  ? "border-blue-600 ring-2 ring-blue-400"
-                  : "hover:shadow-lg"
-              }`}
-            >
-              <div
-                className="w-32 h-32 rounded-md mb-2"
-                style={{ backgroundColor: color.hex }}
-              />
-              <div className="mt-2 font-medium">{color.name}</div>
-              <div className="text-sm text-gray-500">{color.code}</div>
-              <div className="text-xs text-gray-400">{color.finish}</div>
-            </button>
-          );
-        })}
+  return (
+    <div className="">
+      <h2 className="text-xl font-semibold mb-4 text-center">Available Wrap Colors</h2>
+
+      <div className="overflow-x-auto">
+        <div className="flex gap-4 w-screen">
+          {wrapColors.map((color) => {
+            const isSelected = selectedColor === color.name;
+
+            return (
+              <button
+                key={color.code}
+                type="button"
+                onClick={() => onSelect(color.name)}
+                className={`flex-shrink-0 w-36 sm:w-40 text-center p-3 border rounded-lg transition ${
+                  isSelected
+                    ? "border-blue-600 ring-2 ring-blue-400"
+                    : "hover:shadow-lg"
+                }`}
+              >
+                <div
+                  className="w-full h-28 rounded mb-2"
+                  style={{ backgroundColor: color.hex }}
+                />
+                <div className="text-sm font-medium">{color.name}</div>
+                <div className="text-xs text-gray-500">{color.code}</div>
+                <div className="text-xs text-gray-400">{color.finish}</div>
+              </button>
+            );
+          })}
+        </div>
       </div>
 
-      {/* Optional: Show selected color */}
       {selectedColor && (
         <p className="mt-4 text-center text-green-600">
           Selected Color: <strong>{selectedColor}</strong>
@@ -185,4 +186,5 @@ function WrapColorSwatches({ selectedColor, onSelect }) {
     </div>
   );
 }
+
 export default WrapColorSwatches;
