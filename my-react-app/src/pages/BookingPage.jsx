@@ -3,6 +3,7 @@ import CarDetails from "../components/CarDetails";
 import Service from "../components/Service";
 import BookDate from "../components/BookDate";
 import OwnerDetails from "../components/OwnerDetails";
+import Summary from "../components/Summary";
 
 function BookingPage() {
   const [step, setStep] = useState(1);
@@ -24,18 +25,19 @@ function BookingPage() {
     <div className="min-h-screen bg-gray-100">
       <h1 className="text-2xl font-bold text-center py-8">Book Now</h1>
       
-      {/* Progress indicator */}
-      <div className="flex justify-center mb-8">
-        {[1, 2, 3, 4].map((stepNumber) => (
-          <div
-            key={stepNumber}
-            className={`w-10 h-10 mx-2 rounded-full flex items-center justify-center 
-              ${step >= stepNumber ? 'bg-blue-500 text-white' : 'bg-gray-300'}`}
-          >
-            {stepNumber}
-          </div>
-        ))}
-      </div>
+      {/* Progress bar */}
+      <div className="w-full max-w-xl mx-auto pt-3 mb-8 px-4">
+  <div className="w-full bg-gray-300 h-3 rounded-full">
+    <div
+      className="bg-blue-500 h-3 rounded-full transition-all duration-300"
+      style={{ width: `${(step - 1) / 4 * 100}%` }}
+    ></div>
+  </div>
+  <div className="text-sm text-center mt-2 text-gray-600">
+    Step {step} of 5
+  </div>
+</div>
+
 
       <div className="flex flex-col items-center pb-12">
         {step === 1 && (
@@ -70,13 +72,23 @@ function BookingPage() {
         {step === 4 && (
           <OwnerDetails 
             onBack={goBack}
-            onSubmit={(data) => {
+            onNext={(data) => {
               updateBookingData({ ownerDetails: data });
               console.log("Complete booking data:", {
                 ...bookingData,
                 ownerDetails: data
               });
-              // Here you would typically send data to your backend
+              goNext();
+            }}
+          />
+        )}
+        {step === 5 && (
+          <Summary 
+            bookingData={bookingData} 
+            onBack={goBack} 
+            onSubmit={() => {
+              console.log("Final booking data:", bookingData);
+              alert("Booking confirmed! Details: ");
             }}
           />
         )}

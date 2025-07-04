@@ -14,17 +14,35 @@ function CarDetails({ onNext }) {
     ];
     
     const carBrands = [
-        "Toyota", "Honda", "Ford", "Chevrolet", "BMW", "Audi"
+        "Audi", "BMW", "Chevrolet", "Dodge", "Ford", "Honda", "Hyundai", "Jaguar",
+        "Jeep", "Kia", "Land Rover", "Lexus", "Mazda", "Mercedes", "Mitsubishi",
+        "Nissan", "Porsche", "Subaru", "Toyota", "Volkswagen", "Volvo" 
     ];
     
     // Could make this dynamic based on brand selection
     const carModels = {
-        "Toyota": ["Camry", "Corolla", "RAV4", "Prius"],
+        "Toyota": ["Camry", "Harrier", "Corolla", "RAV4", "Prius", "Highlander", "Tacoma", "Tundra", "C-HR", "Land Cruiser", "Crown", "Supra"],
         "Honda": ["Civic", "Accord", "CR-V", "Pilot"],
         "Ford": ["F-150", "Mustang", "Explorer", "Focus"],
         "Chevrolet": ["Silverado", "Malibu", "Equinox", "Camaro"],
-        "BMW": ["3 Series", "5 Series", "X5", "X3"],
-        "Audi": ["A4", "A6", "Q5", "Q7"]
+        "BMW": ["1 Series", "3 Series", "5 Series", "7 Series", "X1", "X3", "X5", "X7"],
+        "Mercedes": ["A-Class", "C-Class", "E-Class", "S-Class", "GLA", "GLC", "GLE", "GLS", "AMG", "EQB", "EQS"],
+        "Volkswagen": ["Golf", "Passat", "Tiguan", "Jetta", "Atlas", "ID.4", "Arteon", "T-Cross", "Touareg"],
+        "Nissan": ["Altima", "Maxima", "Rogue", "Sentra"],
+        "Audi": ["A3", "A4", "A6", "A8", "Q3", "Q5", "Q7", "Q8"],
+        "Jaguar": ["F-PACE", "XE", "XF", "XJ"],
+        "Jeep": ["Wrangler", "Cherokee", "Grand Cherokee", "Renegade"],
+        "Subaru": ["Impreza", "Legacy", "Outback", "Forester", "Ascent", "Crosstrek", "BRZ", "WRX"],
+        "Kia": ["Optima", "Sorento", "Sportage", "Seltos"],
+        "Hyundai": ["Elantra", "Sonata", "Tucson", "Santa Fe"],
+        "Mazda": ["Mazda3", "Mazda6", "CX-5", "CX-9", "Atenza", "Axela", "MX-5 Miata"],
+        "Dodge": ["Charger", "Challenger", "Durango", "Ram","SRT"],
+        "Porsche": ["911", "Cayenne", "Macan", "Panamera", "Taycan", "Boxster", "Cayman"],
+        "Volvo": ["S60", "S90", "XC40", "XC60", "XC90", "V60", "V90", "C40 Recharge"],
+        "Land Rover": ["Range Rover", "Discovery", "Defender"],
+        "Mitsubishi": ["Outlander", "Eclipse Cross", "Lancer"],
+        "Lexus": ["IS", "ES", "GS", "RX", "NX", "LX"],
+        
     };
 
     const handleChange = (e) => {
@@ -44,7 +62,7 @@ function CarDetails({ onNext }) {
         const { type, brand, model } = formData;
         if (type && brand && model) {
             console.log("Car details submitted:", formData);
-            onNext();
+            onNext(formData);
         } else {
             setError("Please fill in all fields before continuing.");
         }
