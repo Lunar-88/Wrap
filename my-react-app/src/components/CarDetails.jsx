@@ -2,16 +2,11 @@ import { useState } from 'react';
 
 function CarDetails({ onNext }) {
     const [formData, setFormData] = useState({
-        type: "",
         brand: "",
         model: ""
     });
 
     const [error, setError] = useState("");
-
-    const carTypes = [
-        "Sedan", "SUV", "Truck", "Coupe", "Hatchback", "Convertible"
-    ];
     
     const carBrands = [
         "Audi", "BMW", "Chevrolet", "Dodge", "Ford", "Honda", "Hyundai", "Jaguar",
@@ -59,8 +54,8 @@ function CarDetails({ onNext }) {
         e.preventDefault();
         setError("");
 
-        const { type, brand, model } = formData;
-        if (type && brand && model) {
+        const { brand, model } = formData;
+        if (brand && model) {
             console.log("Car details submitted:", formData);
             onNext(formData);
         } else {
@@ -79,21 +74,6 @@ function CarDetails({ onNext }) {
                         <div className="mb-4 text-red-500 text-sm">{error}</div>
                     )}
                     
-                    <div className="mb-4 w-full">
-                        <select
-                            id="type"
-                            name="type"
-                            value={formData.type}
-                            onChange={handleChange}
-                            required
-                            className="p-2 border rounded w-full"
-                        >
-                            <option value="">Select Car Type</option>
-                            {carTypes.map((type, index) => (
-                                <option key={index} value={type}>{type}</option>
-                            ))}
-                        </select>
-                    </div>
                     
                     <div className="mb-4 w-full">
                         <select

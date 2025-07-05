@@ -18,7 +18,7 @@ function Summary({ bookingData, onBack, onSubmit }) {
              <h3 className="font-semibold">Wrap Color:</h3>
              <p>{wrapColor}</p>
             </div>
-        )}
+        )} 
 
         <div>
           <h3 className="font-semibold">Car Details:</h3>

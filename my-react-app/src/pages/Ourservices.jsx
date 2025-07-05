@@ -1,4 +1,6 @@
 
+import WrapColorSwatches from "../components/WrapColorSwatches";
+
 function Ourservices() {
   return (
     <div className="min-h-svh pt-40"> {/* pushes content below navbar */}
@@ -31,6 +33,9 @@ function Ourservices() {
             </div>
         </div>
       </div>
+      <div className="mt-10 max-w-screen w-full">
+            <WrapColorSwatches/>
+          </div>
     </div>
   );
 }
