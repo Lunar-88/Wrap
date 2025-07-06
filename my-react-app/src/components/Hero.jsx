@@ -16,7 +16,7 @@ function Hero() {
         {/* Content */}
         <div className="absolute inset-0 flex flex-col justify-center px-6 md:px-10 text-left md:text-left">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-tight drop-shadow-lg">
-            Transform Your Vehicle<br className="hidden sm:block" />With Our Premium <br className="hidden sm:block" />Services
+            Transform Your Vehicle <br className="hidden sm:block" />With Our Premium <br className="hidden sm:block" />Services
           </h1>
           <p className="mt-4 sm:mt-6 text-lg sm:text-xl md:text-2xl text-gray-200 max-w-xl drop-shadow-md">
             Transform the appearance of your ride, giving it a unique

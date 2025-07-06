@@ -2,7 +2,7 @@
 import React from 'react';
 
 function Summary({ bookingData, onBack, onSubmit }) {
-  const { carDetails, service,wrapColor, date, ownerDetails } = bookingData;
+  const { carDetails, service,wrapColor=null, date, ownerDetails } = bookingData;
 
   return (
     <div className="bg-white p-8 rounded shadow-md max-w-lg w-full">

@@ -7,20 +7,26 @@ function Media() {
       <h2 className="text-2xl font-bold text-center mb-4">Gallery</h2>
         <div className=" bg-gray-100">
             <BeforeAfterSlider
-             beforeImage="image22.png"
-             afterImage="hero2.png"
+             beforeImage="hero2.png"
+             afterImage="GTI.png"
             />
         </div>
         <div className="pt-10 bg-gray-100">
             <BeforeAfterSlider
-             beforeImage="image22.png"
-             afterImage="hero2.png"
+             beforeImage="image88.png"
+             afterImage="whiteGLE.png"
             />
         </div>
         <div className="pt-10 bg-gray-100">
             <BeforeAfterSlider
-             beforeImage="image22.png"
-             afterImage="hero2.png"
+             beforeImage="image66.png"
+             afterImage="blueamg.png"
+            />
+        </div>
+        <div className="pt-10 bg-gray-100">
+            <BeforeAfterSlider
+             beforeImage="GTI2.png"
+             afterImage="GreenGTI.png"
             />
         </div>
     </div>

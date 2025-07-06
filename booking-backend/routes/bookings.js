@@ -6,14 +6,17 @@ const Booking = require("../models/Booking");
 // POST a new booking
 router.post("/", async (req, res) => {
   try {
-    console.log("Incoming booking data:", req.body);
+    console.log("📥 Incoming booking:", req.body); // log input
     const booking = new Booking(req.body);
-    await booking.save();
-    res.status(201).json({ message: "Booking created", booking });
+    const saved = await booking.save();
+    console.log("✅ Booking saved:", saved); // log what got saved
+    res.status(201).json({ message: "Booking created", booking: saved });
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    console.error("❌ Booking error:", err.message);
+    res.status(400).json({ error: err.message });
   }
 });
+
 
 // GET all bookings
 router.get("/", async (req, res) => {

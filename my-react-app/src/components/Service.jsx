@@ -79,6 +79,18 @@ function Service({ onNext, onBack }) {
             </select>
           </div>
 
+          {/* Show swatches only if Vinyl wrap is selected */}
+        {formData.service === "Vinyl wrap" && (
+          <div className="mt-10 max-w-screen-md w-full">
+            <WrapColorSwatches
+              selectedColor={formData.wrapColor}
+              onSelect={(color) =>
+                setFormData((prev) => ({ ...prev, wrapColor: color }))
+              }
+            />
+          </div>
+        )}
+
           <div className="flex justify-between mt-8">
             <button
               type="button"
@@ -101,17 +113,7 @@ function Service({ onNext, onBack }) {
           </div>
         </form>
 
-        {/* Show swatches only if Vinyl wrap is selected */}
-        {formData.service === "Vinyl wrap" && (
-          <div className="mt-10 max-w-screen-md w-full">
-            <WrapColorSwatches
-              selectedColor={formData.wrapColor}
-              onSelect={(color) =>
-                setFormData((prev) => ({ ...prev, wrapColor: color }))
-              }
-            />
-          </div>
-        )}
+        
       </div>
     </div>
   );

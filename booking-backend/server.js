@@ -1,5 +1,4 @@
 
-// server.js
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
@@ -9,24 +8,28 @@ const bookingRoutes = require("./routes/bookings");
 dotenv.config();
 const app = express();
 
+// Middleware
 app.use(cors());
 app.use(express.json());
 
-
-// server.js
-
+// ✅ Root route
 app.get("/", (req, res) => {
-  console.log("Root route hit");
-  res.send("Backend is running ✅");
+  res.send("✅ Backend is running");
 });
 
+// API route
+app.use("/api/bookings", bookingRoutes);
 
-// Connect to MongoDB and start server
+// MongoDB connection
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => {
+    console.log("✅ Connected to MongoDB");
     app.listen(process.env.PORT, () => {
-      console.log(`Server running on port ${process.env.PORT}`);
+      console.log(`🚀 Server running on http://localhost:${process.env.PORT}`);
     });
   })
-  .catch((err) => console.error("MongoDB connection failed:", err));
+  .catch((err) => {
+    console.error("❌ MongoDB connection failed:", err);
+  });
+
