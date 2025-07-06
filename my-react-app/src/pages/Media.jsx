@@ -25,8 +25,8 @@ function Media() {
         </div>
         <div className="pt-10 bg-gray-100">
             <BeforeAfterSlider
-             beforeImage="GTI2.png"
-             afterImage="GreenGTI.png"
+             beforeImage="GreenGTI.png"
+             afterImage="GTI2.png"
             />
         </div>
     </div>

@@ -147,8 +147,6 @@ function WrapColorSwatches({ selectedColor, onSelect }) {
 
   return (
     <div className="">
-      <h2 className="text-xl font-semibold mb-4 text-center">Choose a Wrap Color</h2>
-
       <div className="overflow-x-auto">
         <div className="flex gap-4 w-screen">
           {wrapColors.map((color) => {

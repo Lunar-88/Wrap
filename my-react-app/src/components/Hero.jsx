@@ -26,9 +26,7 @@ function Hero() {
             superior materials, stunning results.
           </p>
           <div className="mt-6 sm:mt-8">
-            <button className="bg-black text-white px-5 py-2 rounded-md hover:bg-gray-800 transition duration-300 font-bold text-base sm:text-lg">
-              Book Now
-            </button>
+            
           </div>
         </div>
       </div>  
