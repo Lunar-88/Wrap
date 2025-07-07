@@ -4,6 +4,7 @@ import Service from "../components/Service";
 import BookDate from "../components/BookDate";
 import OwnerDetails from "../components/OwnerDetails";
 import Summary from "../components/Summary";
+import PaystackBtn from "../components/PaystackBtn";
 
 function BookingPage() {
   const [step, setStep] = useState(1);
@@ -132,6 +133,19 @@ function BookingPage() {
                 console.error("❌ Error submitting booking:", error);
                 alert("Something went wrong while confirming your booking.");
               }
+            }}
+          />
+        )}
+        {step === 6 && (
+          <PaystackBtn
+            amount={1000} // Example amount, replace with actual
+            onSuccess={(transaction) => {
+              console.log("✅ Payment successful:", transaction);
+              alert("Payment successful! Thank you for your booking.");
+            }}
+            onClose={() => {
+              console.log("❌ Payment closed");
+              alert("Payment process was closed.");
             }}
           />
         )}

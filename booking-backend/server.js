@@ -4,32 +4,39 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const dotenv = require("dotenv");
 const bookingRoutes = require("./routes/bookings");
+const paymentRoutes = require("./routes/payments");
 
 dotenv.config();
+
 const app = express();
 
-// Middleware
+// ✅ Middleware
 app.use(cors());
 app.use(express.json());
 
-// ✅ Root route
+// ✅ Routes
+app.use("/api/bookings", bookingRoutes);
+app.use("/api/payment", paymentRoutes); // 🛠️ Corrected
+
+// ✅ Root route for health check
 app.get("/", (req, res) => {
-  res.send("✅ Backend is running");
+  res.send("✅ Laser Wraps KE Backend is running");
 });
 
-// API route
-app.use("/api/bookings", bookingRoutes);
-
-// MongoDB connection
+// ✅ MongoDB connection
 mongoose
-  .connect(process.env.MONGO_URI)
+  .connect(process.env.MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
   .then(() => {
     console.log("✅ Connected to MongoDB");
-    app.listen(process.env.PORT, () => {
-      console.log(`🚀 Server running on http://localhost:${process.env.PORT}`);
+
+    const PORT = process.env.PORT || 5000;
+    app.listen(PORT, () => {
+      console.log(`🚀 Server running at http://localhost:${PORT}`);
     });
   })
   .catch((err) => {
-    console.error("❌ MongoDB connection failed:", err);
+    console.error("❌ MongoDB connection failed:", err.message);
   });
-
