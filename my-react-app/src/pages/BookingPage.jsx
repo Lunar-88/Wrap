@@ -1,34 +1,62 @@
+
 import { useState } from "react";
 import CarDetails from "../components/CarDetails";
 import Service from "../components/Service";
 import BookDate from "../components/BookDate";
 import OwnerDetails from "../components/OwnerDetails";
 import Summary from "../components/Summary";
-import PaystackBtn from "../components/PaystackBtn";
 
 function BookingPage() {
   const [step, setStep] = useState(1);
+
   const [bookingData, setBookingData] = useState({
     carDetails: {},
     service: "",
     wrapColor: "",
     date: "",
-    ownerDetails: {}
+    ownerDetails: {},
   });
 
-  const goNext = () => setStep(prev => prev + 1);
-  const goBack = () => setStep(prev => prev - 1);
+  const goNext = () => setStep((prev) => prev + 1);
+  const goBack = () => setStep((prev) => prev - 1);
 
   const updateBookingData = (newData) => {
-    setBookingData(prev => {
-      return {
-        ...prev,
-        ...newData,
-        // Handle nested fields explicitly
-        carDetails: { ...prev.carDetails, ...newData.carDetails },
-        ownerDetails: { ...prev.ownerDetails, ...newData.ownerDetails },
-      };
-    });
+    setBookingData((prev) => ({
+      ...prev,
+      ...newData,
+      carDetails: { ...prev.carDetails, ...newData.carDetails },
+      ownerDetails: { ...prev.ownerDetails, ...newData.ownerDetails },
+    }));
+  };
+
+  const handleBookingSubmit = async () => {
+    const payload = {
+      name: bookingData.ownerDetails?.name,
+      email: bookingData.ownerDetails?.email,
+      phone: bookingData.ownerDetails?.phone,
+      plate: bookingData.ownerDetails?.plate,
+      car: `${bookingData.carDetails?.brand} ${bookingData.carDetails?.model}`,
+      service: bookingData.service,
+      wrapColor: bookingData.wrapColor || null,
+      date: new Date(bookingData.date).toISOString(),
+    };
+
+    try {
+      const response = await fetch("http://localhost:5000/api/bookings", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      if (!response.ok) throw new Error("Failed to submit booking");
+
+      const data = await response.json();
+      console.log("✅ Booking saved:", data);
+      alert("🎉 Booking submitted successfully!");
+    } catch (error) {
+      console.error("❌ Error submitting booking:", error);
+      alert("Something went wrong while confirming your booking.");
+    }
   };
 
   return (
@@ -99,54 +127,7 @@ function BookingPage() {
           <Summary
             bookingData={bookingData}
             onBack={goBack}
-            onSubmit={async () => {
-              const payload = {
-                name: bookingData.ownerDetails?.name,
-                email: bookingData.ownerDetails?.email,
-                phone: bookingData.ownerDetails?.phone,
-                plate: bookingData.ownerDetails?.plate,
-                car: `${bookingData.carDetails?.brand} ${bookingData.carDetails?.model}`,
-                service: bookingData.service,
-                wrapColor: bookingData.wrapColor || null,
-                date: bookingData.date,
-              };
-
-              console.log("🚀 Submitting booking:", payload);
-
-              try {
-                const response = await fetch("http://localhost:5000/api/bookings", {
-                  method: "POST",
-                  headers: {
-                    "Content-Type": "application/json"
-                  },
-                  body: JSON.stringify(payload),
-                });
-
-                if (!response.ok) {
-                  throw new Error("Failed to submit booking");
-                }
-
-                const data = await response.json();
-                console.log("✅ Booking confirmed:", data);
-                alert("Booking confirmed successfully!");
-              } catch (error) {
-                console.error("❌ Error submitting booking:", error);
-                alert("Something went wrong while confirming your booking.");
-              }
-            }}
-          />
-        )}
-        {step === 6 && (
-          <PaystackBtn
-            amount={1000} // Example amount, replace with actual
-            onSuccess={(transaction) => {
-              console.log("✅ Payment successful:", transaction);
-              alert("Payment successful! Thank you for your booking.");
-            }}
-            onClose={() => {
-              console.log("❌ Payment closed");
-              alert("Payment process was closed.");
-            }}
+            onSubmit={handleBookingSubmit}
           />
         )}
       </div>
@@ -155,3 +136,4 @@ function BookingPage() {
 }
 
 export default BookingPage;
+
