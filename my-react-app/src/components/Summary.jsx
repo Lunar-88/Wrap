@@ -23,7 +23,6 @@ function Summary({ bookingData, onBack, onSubmit }) {
 
         <div>
           <h3 className="font-semibold">Car Details:</h3>
-          <p>Type: {carDetails?.type}</p>
           <p>Brand: {carDetails?.brand}</p>
           <p>Model: {carDetails?.model}</p>
         </div>

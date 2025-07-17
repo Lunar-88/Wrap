@@ -30,6 +30,7 @@ function BookingPage() {
   };
 
   const handleBookingSubmit = async () => {
+    const isVinylWrap = bookingData.service === "Vinyl wrap";
     const payload = {
       name: bookingData.ownerDetails?.name,
       email: bookingData.ownerDetails?.email,
@@ -37,27 +38,33 @@ function BookingPage() {
       plate: bookingData.ownerDetails?.plate,
       car: `${bookingData.carDetails?.brand} ${bookingData.carDetails?.model}`,
       service: bookingData.service,
-      wrapColor: bookingData.wrapColor || null,
       date: new Date(bookingData.date).toISOString(),
+      ...(isVinylWrap && bookingData.wrapColor && { wrapColor: bookingData.wrapColor })
     };
-
+  
+    console.log("🚀 Payload being submitted:", payload); // 🧪 Debug
+  
     try {
       const response = await fetch("http://localhost:5000/api/bookings", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
-
-      if (!response.ok) throw new Error("Failed to submit booking");
-
+  
+      if (!response.ok) {
+        const errorData = await response.json(); // 🔍 get backend message
+        throw new Error(errorData.error || "Failed to submit booking");
+      }
+  
       const data = await response.json();
       console.log("✅ Booking saved:", data);
       alert("🎉 Booking submitted successfully!");
     } catch (error) {
-      console.error("❌ Error submitting booking:", error);
-      alert("Something went wrong while confirming your booking.");
+      console.error("❌ Error submitting booking:", error.message);
+      alert(`Something went wrong: ${error.message}`);
     }
   };
+  
 
   return (
     <div className="min-h-screen bg-gray-100">
