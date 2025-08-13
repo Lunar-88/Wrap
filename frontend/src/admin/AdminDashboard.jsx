@@ -7,6 +7,8 @@ function AdminDashboard() {
   const [error, setError] = useState("");
 
   useEffect(() => {
+    let ignore = false; // ✅ Prevent duplicate fetch in Strict Mode
+
     fetch("http://localhost:5000/api/bookings")
       .then((res) => {
         if (!res.ok) {
@@ -15,14 +17,24 @@ function AdminDashboard() {
         return res.json();
       })
       .then((data) => {
-        setBookings(Array.isArray(data) ? data : []);
-        setLoading(false);
+        console.log("📦 API response:", data);
+        if (!ignore) {
+          // ✅ Correctly extract the array from data.data
+          setBookings(Array.isArray(data.data) ? data.data : []);
+          setLoading(false);
+        }
       })
       .catch((err) => {
         console.error("❌ Error fetching bookings:", err);
-        setError("Failed to load bookings.");
-        setLoading(false);
+        if (!ignore) {
+          setError("Failed to load bookings.");
+          setLoading(false);
+        }
       });
+
+    return () => {
+      ignore = true;
+    };
   }, []);
 
   const handleLogout = () => {
