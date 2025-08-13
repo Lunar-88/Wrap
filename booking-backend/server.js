@@ -2,38 +2,44 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
-const dotenv = require("dotenv");
-const bookingRoutes = require("./routes/bookings");
+require("dotenv").config();
 
-dotenv.config();
-
+// Initialize express
 const app = express();
 
-// ✅ Middleware
+// Middleware
 app.use(cors());
 app.use(express.json());
 
-// ✅ Routes
-app.use("/api/bookings", bookingRoutes);
-
-// ✅ Root route for health check
-app.get("/", (req, res) => {
-  res.send("✅ Laser Wraps KE Backend is running");
+// Debug middleware - logs all incoming requests
+app.use((req, res, next) => {
+  console.log(`[${new Date().toISOString()}] ${req.method} ${req.path}`);
+  next();
 });
 
-mongoose
-  .connect(process.env.MONGO_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => {
-    console.log("✅ Connected to MongoDB");
+// Routes
+const bookingsRouter = require("./routes/bookings");
+app.use("/api/bookings", bookingsRouter);  // Fixed mounting path
 
-    const PORT = process.env.PORT || 5000;
-    app.listen(PORT, () => {
-      console.log(`🚀 Server running at http://localhost:${PORT}`);
-    });
-  })
-  .catch((err) => {
-    console.error("❌ MongoDB connection failed:", err.message);
+// Health check endpoint
+app.get("/", (req, res) => {
+  res.json({ 
+    status: "running",
+    message: "Laser Wraps Booking API",
+    timestamp: new Date()
   });
+});
+
+// MongoDB connection (modern version - removed deprecated options)
+mongoose.connect(process.env.MONGO_URI)
+  .then(() => console.log("✅ MongoDB connected successfully"))
+  .catch(err => console.error("❌ MongoDB connection error:", err));
+
+// Start server
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`🚀 Server running on http://localhost:${PORT}`);
+  console.log("Available routes:");
+  console.log("- GET /api/bookings");
+  console.log("- POST /api/bookings");
+});
