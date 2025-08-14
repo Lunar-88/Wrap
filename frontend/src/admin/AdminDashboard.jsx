@@ -7,9 +7,9 @@ function AdminDashboard() {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    let ignore = false; // ✅ Prevent duplicate fetch in Strict Mode
-
-    fetch("http://localhost:5000/api/bookings")
+    let ignore = false;
+  
+    fetch(`${process.env.REACT_APP_API_URL}/bookings`)
       .then((res) => {
         if (!res.ok) {
           throw new Error(`Server error: ${res.status}`);
@@ -19,7 +19,6 @@ function AdminDashboard() {
       .then((data) => {
         console.log("📦 API response:", data);
         if (!ignore) {
-          // ✅ Correctly extract the array from data.data
           setBookings(Array.isArray(data.data) ? data.data : []);
           setLoading(false);
         }
@@ -31,12 +30,12 @@ function AdminDashboard() {
           setLoading(false);
         }
       });
-
+  
     return () => {
       ignore = true;
     };
   }, []);
-
+  
   const handleLogout = () => {
     localStorage.removeItem("isAdmin");
     window.location.href = "/";
