@@ -9,7 +9,7 @@ function AdminDashboard() {
   useEffect(() => {
     let ignore = false; // ✅ Prevent duplicate fetch in Strict Mode
 
-    fetch("http://localhost:5000/api/bookings")
+    fetch("https://autowrap.onrender.com/api/bookings")
       .then((res) => {
         if (!res.ok) {
           throw new Error(`Server error: ${res.status}`);
