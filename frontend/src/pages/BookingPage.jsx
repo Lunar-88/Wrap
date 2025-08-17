@@ -44,18 +44,19 @@ function BookingPage() {
   
     console.log("🚀 Payload being submitted:", payload); // 🧪 Debug
   
+    const API_URL = import.meta.env.VITE_API_URL;
+
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/bookings`, {
+      const response = await fetch(`${API_URL}/bookings`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
-  
+    
       if (!response.ok) {
-        const errorData = await response.json(); // 🔍 get backend message
-        throw new Error(errorData.error || "Failed to submit booking");
+        throw new Error("Failed to submit booking");
       }
-  
+    
       const data = await response.json();
       console.log("✅ Booking saved:", data);
       alert("🎉 Booking submitted successfully!");
@@ -63,6 +64,7 @@ function BookingPage() {
       console.error("❌ Error submitting booking:", error.message);
       alert(`Something went wrong: ${error.message}`);
     }
+    
   };
   
 
