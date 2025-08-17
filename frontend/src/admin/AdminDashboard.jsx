@@ -27,7 +27,7 @@ function AdminDashboard() {
       .catch((err) => {
         console.error("❌ Error fetching bookings:", err);
         if (!ignore) {
-          setError("Failed to load bookings.");
+          setError("Failed to load bookingss.");
           setLoading(false);
         }
       });
