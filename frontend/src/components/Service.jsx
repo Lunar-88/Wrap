@@ -5,7 +5,7 @@ import Wraps from "./Wraps";
 function Service({ onNext, onBack }) {
   const [formData, setFormData] = React.useState({
     service: "",
-    wrapColor: "",
+    wrapType: "", // renamed
   });
 
   const services = [
@@ -21,12 +21,12 @@ function Service({ onNext, onBack }) {
   const handleChange = (e) => {
     const { name, value } = e.target;
 
-    // Clear wrap color if service is changed away from Vinyl wrap
+    // Clear wrapType if service is changed away from Vinyl wrap
     if (name === "service" && value !== "Vinyl wrap") {
       setFormData((prev) => ({
         ...prev,
         [name]: value,
-        wrapColor: "", // reset
+        wrapType: "", // reset
       }));
     } else {
       setFormData((prev) => ({ ...prev, [name]: value }));
@@ -36,7 +36,7 @@ function Service({ onNext, onBack }) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (formData.service === "Vinyl wrap" && !formData.wrapColor) {
+    if (formData.service === "Vinyl wrap" && !formData.wrapType) {
       alert("Please select a wrap type.");
       return;
     }
@@ -46,13 +46,13 @@ function Service({ onNext, onBack }) {
 
   const isNextDisabled =
     !formData.service ||
-    (formData.service === "Vinyl wrap" && !formData.wrapColor);
+    (formData.service === "Vinyl wrap" && !formData.wrapType);
 
   return (
-    <div className="min-h-screen  bg-gray-100">
+    <div className="min-h-screen bg-gray-100">
       <h1 className="text-2xl font-bold text-center py-8">Book Now</h1>
 
-      <div className="flex  flex-col items-center justify-center">
+      <div className="flex flex-col items-center justify-center">
         <form
           onSubmit={handleSubmit}
           className="w-screen max-w-md bg-white py-8 px-4 rounded-lg shadow-md"
@@ -62,6 +62,9 @@ function Service({ onNext, onBack }) {
           </h2>
 
           <div className="pt-6 mb-6">
+            <label htmlFor="service" className="block mb-2 font-medium">
+              Service
+            </label>
             <select
               id="service"
               name="service"
@@ -79,20 +82,27 @@ function Service({ onNext, onBack }) {
             </select>
           </div>
 
-          {/* Show swatches only if Vinyl wrap is selected */}
-        {formData.service === "Vinyl wrap" && (
-          <div className="mt-10 max-w-screen-md w-full">
-            <h1 className="text-2xl font-bold text-center mb-5">Choose a wrap type</h1>
+          {/* Show wrap type swatches only if Vinyl wrap is selected */}
+          {formData.service === "Vinyl wrap" && (
+            <div className="mt-10 max-w-screen-md w-full">
+              <h1 className="text-2xl font-bold text-center mb-5">
+                Choose a wrap type
+              </h1>
 
-            <Wraps
-             selectedColor={formData.wrapColor}
-             onSelect={(color) =>
-             setFormData((prev) => ({ ...prev, wrapColor: color }))
-             }
-            />
+              <Wraps
+                selectedColor={formData.wrapType}
+                onSelect={(type) =>
+                  setFormData((prev) => ({ ...prev, wrapType: type }))
+                }
+              />
 
-          </div>
-        )}
+              {!formData.wrapType && (
+                <p className="text-red-500 text-sm mt-2">
+                  Please select a wrap type
+                </p>
+              )}
+            </div>
+          )}
 
           <div className="flex justify-between mt-8">
             <button
@@ -115,8 +125,6 @@ function Service({ onNext, onBack }) {
             </button>
           </div>
         </form>
-
-        
       </div>
     </div>
   );
