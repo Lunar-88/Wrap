@@ -123,7 +123,7 @@ function Navbar() {
         </button>
 
         {/* Links */}
-        <ul className="flex flex-col gap-4 font-semibold text-lg mt-12">
+        <ul className="flex flex-col gap-3 font-semibold text-lg mt-12">
           <li>
             <Link className="block py-2 w-full" to="/" onClick={toggleMenu}>
               Home
@@ -165,6 +165,7 @@ function Navbar() {
               Contact
             </Link>
           </li>
+
           <li>
             <button
               onClick={handleBookingClick}

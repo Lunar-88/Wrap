@@ -1,6 +1,6 @@
 
 import React from "react";
-import WrapColorSwatches from "./WrapColorSwatches";
+import Wraps from "./Wraps";
 
 function Service({ onNext, onBack }) {
   const [formData, setFormData] = React.useState({
@@ -37,7 +37,7 @@ function Service({ onNext, onBack }) {
     e.preventDefault();
 
     if (formData.service === "Vinyl wrap" && !formData.wrapColor) {
-      alert("Please select a wrap color.");
+      alert("Please select a wrap type.");
       return;
     }
 
@@ -82,15 +82,15 @@ function Service({ onNext, onBack }) {
           {/* Show swatches only if Vinyl wrap is selected */}
         {formData.service === "Vinyl wrap" && (
           <div className="mt-10 max-w-screen-md w-full">
-            <h1 className="text-2xl font-bold text-center mb-5">Choose a wrap colors</h1>
+            <h1 className="text-2xl font-bold text-center mb-5">Choose a wrap type</h1>
 
-            <WrapColorSwatches
-
-              selectedColor={formData.wrapColor}
-              onSelect={(color) =>
-                setFormData((prev) => ({ ...prev, wrapColor: color }))
-              }
+            <Wraps
+             selectedColor={formData.wrapColor}
+             onSelect={(color) =>
+             setFormData((prev) => ({ ...prev, wrapColor: color }))
+             }
             />
+
           </div>
         )}
 

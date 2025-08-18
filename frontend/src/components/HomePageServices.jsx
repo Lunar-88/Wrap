@@ -46,14 +46,14 @@ function HomePageServices() {
   ];
 
   return (
-    <div className="min-h-svh pt-24">
+    <div className="min-h-svh pt-12">
       {/* pushes content below navbar */}
       <div className="max-w-6xl mx-auto">
         <motion.h2
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-4xl font-bold text-center mb-5"
+          className="text-3xl font-bold text-center mb-5"
         >
           Our Services
         </motion.h2>
@@ -67,7 +67,7 @@ function HomePageServices() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.2 }}
-              className="bg-white p-6 rounded-lg shadow-lg hover:shadow-2xl transition-shadow"
+              className="bg-white p-6 rounded-lg shadow-md hover:shadow-2xl transition-shadow"
             >
               <h3 className="text-xl font-semibold mb-4">{service.title}</h3>
               <p className="text-gray-700">{service.description}</p>
