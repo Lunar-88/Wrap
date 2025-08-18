@@ -8,6 +8,7 @@ import Summary from "../components/Summary";
 
 function BookingPage() {
   const [step, setStep] = useState(1);
+  const [loading, setLoading] = useState(false); // ✅ Prevent double clicks
 
   const [bookingData, setBookingData] = useState({
     carDetails: {},
@@ -30,6 +31,9 @@ function BookingPage() {
   };
 
   const handleBookingSubmit = async () => {
+    if (loading) return; // ✅ Ignore extra clicks
+    setLoading(true);
+
     const isVinylWrap = bookingData.service === "Vinyl wrap";
     const payload = {
       name: bookingData.ownerDetails?.name,
@@ -38,35 +42,31 @@ function BookingPage() {
       plate: bookingData.ownerDetails?.plate,
       car: `${bookingData.carDetails?.brand} ${bookingData.carDetails?.model}`,
       service: bookingData.service,
-      date: new Date(bookingData.date).toISOString(),
-      ...(isVinylWrap && bookingData.wrapColor && { wrapColor: bookingData.wrapColor })
+      date: bookingData.date ? new Date(bookingData.date).toISOString() : null,
+      ...(isVinylWrap && bookingData.wrapColor && { wrapColor: bookingData.wrapColor }),
     };
-  
-    console.log("🚀 Payload being submitted:", payload); // 🧪 Debug
-  
-    const API_URL = import.meta.env.VITE_API_URL;
 
     try {
-      const response = await fetch(`${API_URL}/bookings`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/bookings`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
-    
+
       if (!response.ok) {
         throw new Error("Failed to submit booking");
       }
-    
+
       const data = await response.json();
       console.log("✅ Booking saved:", data);
       alert("🎉 Booking submitted successfully!");
     } catch (error) {
       console.error("❌ Error submitting booking:", error.message);
       alert(`Something went wrong: ${error.message}`);
+    } finally {
+      setLoading(false); // ✅ Unlock after request finishes
     }
-    
   };
-  
 
   return (
     <div className="min-h-screen bg-gray-100">
@@ -77,7 +77,7 @@ function BookingPage() {
         <div className="w-full bg-gray-300 h-3 rounded-full">
           <div
             className="bg-black h-3 rounded-full transition-all duration-300"
-            style={{ width: `${(step - 1) / 4 * 100}%` }}
+            style={{ width: `${(step / 5) * 100}%` }}
           ></div>
         </div>
         <div className="text-sm text-center mt-2 text-gray-600">
@@ -122,10 +122,6 @@ function BookingPage() {
           <OwnerDetails
             onNext={(data) => {
               updateBookingData({ ownerDetails: data });
-              console.log("✅ Full booking data before summary:", {
-                ...bookingData,
-                ownerDetails: data,
-              });
               goNext();
             }}
             onBack={goBack}
@@ -137,6 +133,7 @@ function BookingPage() {
             bookingData={bookingData}
             onBack={goBack}
             onSubmit={handleBookingSubmit}
+            loading={loading} // ✅ pass loading state down
           />
         )}
       </div>
@@ -145,4 +142,3 @@ function BookingPage() {
 }
 
 export default BookingPage;
-
