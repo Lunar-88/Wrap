@@ -34,10 +34,10 @@ const bookingSchema = new mongoose.Schema({
     required: true,
     trim: true
   },
-  wrapColor: {
+  wrapType: {
     type: String,
     default: null,
-    trim: true
+    trim: true  
   },
   date: {
     type: Date,
@@ -47,13 +47,13 @@ const bookingSchema = new mongoose.Schema({
   timestamps: true
 });
 
-// Optional: Custom validation for wrapColor
+// Optional: Custom validation for wraptype
 bookingSchema.pre("validate", function (next) {
-  if (this.service === "Vinyl wrap" && !this.wrapColor) {
-    this.invalidate("wrapColor", "Wrap color is required when service is 'Vinyl wrap'");
-  }
+  if (this.service === "Vinyl wrap" && !this.wrapType) {
+    this.invalidate("wrapType", "Wrap type is required when service is 'Vinyl wrap'");}
   next();
 });
+
 
 module.exports = mongoose.model("Booking", bookingSchema);
 
