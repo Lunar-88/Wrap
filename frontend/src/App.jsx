@@ -20,7 +20,7 @@ function App() {
       {!isAdminPage && <Navbar />}
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/Services" element={<Services />} />
+        <Route path="/services" element={<Services />} />
         <Route path="/media" element={<Media />} />
         <Route path="/faqs" element={<FAQs />} />
         <Route path="/contact" element={<Contact />} />

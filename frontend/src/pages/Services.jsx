@@ -47,7 +47,7 @@ function Services() {
   ];
 
   return (
-    <div className="min-h-svh pt-24">
+    <div className="min-h-screen pt-28">
       {/* pushes content below navbar */}
       <div className="max-w-6xl mx-auto">
         <motion.h2

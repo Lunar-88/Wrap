@@ -27,7 +27,7 @@ function Navbar() {
         {/* Desktop Menu */}
         <ul className="hidden md:flex gap-10 font-semibold text-lg items-center">
           <li><Link to="/" className="hover:text-white hover:bg-black px-4 py-2 rounded-md">Home</Link></li>
-          <li><Link to="/Ourservices" className="hover:text-white hover:bg-black px-4 py-2 rounded-md">Services</Link></li>
+          <li><Link to="/Services" className="hover:text-white hover:bg-black px-4 py-2 rounded-md">Services</Link></li>
           <li><Link to="/Media" className="hover:text-white hover:bg-black px-4 py-2 rounded-md">Media</Link></li>
           <li><Link to="/FAQs" className="hover:text-white hover:bg-black px-4 py-2 rounded-md">FAQs</Link></li>
           <li><Link to="/Contact" className="hover:text-white hover:bg-black px-4 py-2 rounded-md">Contact</Link></li>
@@ -49,10 +49,10 @@ function Navbar() {
         <div className="bg-white px-6 pb-4 shadow-md right-0 absolute ">
           <ul className="flex flex-col gap-4 font-semibold text-lg">
             <li><Link to="/" onClick={toggleMenu}>Home</Link></li>
-            <li><Link to="/Ourservices" onClick={toggleMenu}>Services</Link></li>
-            <li><Link to="/Media" onClick={toggleMenu}>Media</Link></li>
-            <li><Link to="/FAQs" onClick={toggleMenu}>FAQs</Link></li>
-            <li><Link to="/Contact" onClick={toggleMenu}>Contact</Link></li>
+            <li><Link to="/services" onClick={toggleMenu}>Services</Link></li>
+            <li><Link to="/media" onClick={toggleMenu}>Media</Link></li>
+            <li><Link to="/faqs" onClick={toggleMenu}>FAQs</Link></li>
+            <li><Link to="/contact" onClick={toggleMenu}>Contact</Link></li>
             <li>
               <button
                 onClick={handleBookingClick}
