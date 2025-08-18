@@ -109,7 +109,7 @@ function CarDetails({ onNext }) {
                     </div>
 
                     <button 
-                        type="submit" className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded w-full">Next
+                        type="submit" className="bg-black hover:bg-gray-800 text-white font-bold py-2 px-4 rounded w-full">Next
                     </button>
                 </form>
             </div>

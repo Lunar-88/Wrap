@@ -76,7 +76,7 @@ function BookingPage() {
       <div className="w-full max-w-xl mx-auto pt-3 mb-8 px-4">
         <div className="w-full bg-gray-300 h-3 rounded-full">
           <div
-            className="bg-blue-500 h-3 rounded-full transition-all duration-300"
+            className="bg-black h-3 rounded-full transition-all duration-300"
             style={{ width: `${(step - 1) / 4 * 100}%` }}
           ></div>
         </div>

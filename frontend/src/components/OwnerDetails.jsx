@@ -60,17 +60,17 @@ function OwnerDetails({ onNext, onBack }) {
             required
             className="mb-4 p-2 border rounded w-80"
           />
-          <div className="flex gap-4 mt-4">
+          <div className="flex gap-28 mt-4">
             <button
               type="button"
               onClick={onBack}
-              className="bg-black text-white px-4 py-2 rounded hover:bg-gray-400"
+              className="bg-black text-white px-4 py-2 rounded hover:bg-gray-800"
             >
               Back
             </button>
             <button
               type="submit"
-              className="bg-black text-white px-4 py-2 rounded hover:bg-blue-600"
+              className="bg-black text-white px-4 py-2 rounded hover:bg-gray-800"
             >
               Next
             </button>
