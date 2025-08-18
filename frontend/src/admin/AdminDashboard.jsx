@@ -6,10 +6,13 @@ function AdminDashboard() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
+  // ✅ Use environment variable instead of hardcoding URL
+  const API_URL = import.meta.env.VITE_API_URL;
+
   useEffect(() => {
     let ignore = false; // ✅ Prevent duplicate fetch in Strict Mode
 
-    fetch("https://autowrap.onrender.com/api/bookings")
+    fetch(`${API_URL}/bookings`)
       .then((res) => {
         if (!res.ok) {
           throw new Error(`Server error: ${res.status}`);
@@ -19,7 +22,7 @@ function AdminDashboard() {
       .then((data) => {
         console.log("📦 API response:", data);
         if (!ignore) {
-          // ✅ Correctly extract the array from data.data
+          // ✅ Correctly extract array from response { success, count, data }
           setBookings(Array.isArray(data.data) ? data.data : []);
           setLoading(false);
         }
@@ -27,7 +30,7 @@ function AdminDashboard() {
       .catch((err) => {
         console.error("❌ Error fetching bookings:", err);
         if (!ignore) {
-          setError("Failed to load bookingss.");
+          setError("Failed to load bookings.");
           setLoading(false);
         }
       });
@@ -35,7 +38,7 @@ function AdminDashboard() {
     return () => {
       ignore = true;
     };
-  }, []);
+  }, [API_URL]);
 
   const handleLogout = () => {
     localStorage.removeItem("isAdmin");
