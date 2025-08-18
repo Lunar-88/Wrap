@@ -10,6 +10,7 @@ import Media from './pages/Media.jsx';
 import FAQs from './pages/FAQs.jsx';
 import Contact from './pages/Contact.jsx';
 import BookingPage from './pages/BookingPage.jsx';
+import WhatsAppButton from './components/WhatsAppButton.jsx';
 
 function App() {
   const location = useLocation();
@@ -18,6 +19,7 @@ function App() {
   return (
     <>
       {!isAdminPage && <Navbar />}
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/services" element={<Services />} />
@@ -28,6 +30,10 @@ function App() {
         <Route path="/AdminDashboard" element={<AdminDashboard />} />
         <Route path="*" element={<h1>404 - Page Not Found</h1>} />
       </Routes>
+
+      {/* Floating WhatsApp button outside Routes */}
+      {!isAdminPage && <WhatsAppButton />}
+
       {!isAdminPage && <Footer />}
     </>
   );

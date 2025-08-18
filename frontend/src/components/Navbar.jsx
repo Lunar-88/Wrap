@@ -27,13 +27,13 @@ function Navbar() {
     <div className="w-full bg-white fixed top-0 z-50 shadow-md">
       <nav className="flex items-center justify-between px-6 py-4 max-w-screen-xl mx-auto">
         {/* Logo */}
-        <div>
-          <img
-            src="logos.png"
-            alt="Company Logo"
-            className="h-16 w-16 scale-[5] object-contain pl-4"
-          />
-        </div>
+        <Link to="/">
+        <img
+          src="logos.png"
+          alt="Company Logo"
+          className="h-16 w-16 scale-[5] object-contain pl-4 cursor-pointer"
+        />
+      </Link>
 
         {/* Mobile Menu Button */}
         <button
