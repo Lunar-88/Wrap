@@ -51,5 +51,43 @@ router.post("/", async (req, res) => {
   }
 });
 
+// DELETE booking with backend validation
+router.delete("/:id", async (req, res) => {
+  console.log(`📢 DELETE /api/bookings/${req.params.id} request received`);
+
+  try {
+    const booking = await Booking.findById(req.params.id);
+
+    if (!booking) {
+      return res.status(404).json({
+        success: false,
+        message: "Booking not found",
+      });
+    }
+
+    // Example validation: prevent deleting past bookings
+    if (new Date(booking.date) < new Date()) {
+      return res.status(400).json({
+        success: false,
+        message: "Past bookings cannot be deleted",
+      });
+    }
+
+    await booking.deleteOne();
+
+    console.log(`✅ Booking deleted: ${req.params.id}`);
+
+    res.json({
+      success: true,
+      message: "Booking deleted successfully",
+    });
+  } catch (err) {
+    console.error("🔥 Delete error:", err);
+    res.status(500).json({
+      success: false,
+      message: "Server error",
+    });
+  }
+});
 
 module.exports = router;
