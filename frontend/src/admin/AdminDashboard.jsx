@@ -74,7 +74,7 @@ function AdminDashboard() {
                 <th className="px-4 py-2 text-left">Phone</th>
                 <th className="px-4 py-2 text-left">Email</th>
                 <th className="px-4 py-2 text-left">Car</th>
-                <th className="px-4 py-2 text-left">Wrap Color</th>
+                <th className="px-4 py-2 text-left">Wrap Type</th>
                 <th className="px-4 py-2 text-left">Plate</th>
                 <th className="px-4 py-2 text-left">Service</th>
                 <th className="px-4 py-2 text-left">Date</th>
@@ -87,7 +87,7 @@ function AdminDashboard() {
                   <td className="px-4 py-2">{booking.phone}</td>
                   <td className="px-4 py-2">{booking.email}</td>
                   <td className="px-4 py-2">{booking.car}</td>
-                  <td className="px-4 py-2">{booking.wrapColor || "N/A"}</td>
+                  <td className="px-4 py-2">{booking.wrapType || "N/A"}</td>
                   <td className="px-4 py-2">{booking.plate}</td>
                   <td className="px-4 py-2">{booking.service}</td>
                   <td className="px-4 py-2">

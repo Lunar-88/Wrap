@@ -43,7 +43,7 @@ function BookingPage() {
       car: `${bookingData.carDetails?.brand} ${bookingData.carDetails?.model}`,
       service: bookingData.service,
       date: bookingData.date ? new Date(bookingData.date).toISOString() : null,
-      ...(isVinylWrap && bookingData.wrapColor && { wrapColor: bookingData.wrapColor }),
+      ...(isVinylWrap && bookingData.wrapType && { wrapType: bookingData.wrapType }),
     };
 
     try {
@@ -95,18 +95,19 @@ function BookingPage() {
           />
         )}
 
-        {step === 2 && (
-          <Service
-            onNext={(data) => {
-              updateBookingData({
-                service: data.service,
-                wrapColor: data.wrapColor,
-              });
-              goNext();
-            }}
-            onBack={goBack}
-          />
-        )}
+{step === 2 && (
+  <Service
+    onNext={(data) => {
+      updateBookingData({
+        service: data.service,
+        wrapType: data.wrapType, // ✅ updated
+      });
+      goNext();
+    }}
+    onBack={goBack}
+  />
+)}
+
 
         {step === 3 && (
           <BookDate

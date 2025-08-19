@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 
 function Summary({ bookingData, onBack, onSubmit }) {
-  const { carDetails, service, wrapColor = null, date, ownerDetails } = bookingData;
+  const { carDetails, service, wrapType = null, date, ownerDetails } = bookingData;
   const [loading, setLoading] = useState(false);
 
   const handleConfirm = async () => {
@@ -24,10 +24,10 @@ function Summary({ bookingData, onBack, onSubmit }) {
           <p>{service}</p>
         </div>
 
-        {service === "Vinyl wrap" && wrapColor && (
+        {service === "Vinyl wrap" && wrapType && (
           <div>
-            <h3 className="font-semibold">Wrap Color:</h3>
-            <p>{wrapColor}</p>
+            <h3 className="font-semibold">Wrap Type:</h3>
+            <p>{wrapType}</p>
           </div>
         )}
 
