@@ -14,7 +14,7 @@ function Hero() {
       {/* Background image */}
       <div className="absolute inset-0 w-full h-full">
         <img
-          src="GreenGTI.png"
+          src="heros.png"
           alt="Green Volkswagen GTI car showcasing premium wrapping service"
           className="object-cover w-full h-full transition-transform duration-300 ease-in-out hover:scale-150"
         />
