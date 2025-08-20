@@ -3,7 +3,7 @@ function Whyus() {
   return (
     <section className="w-full bg-gray-100 py-20">
   <div className="flex flex-col items-center justify-center text-center">
-    <h1 className="text-2xl font-bold mb-12">Why Choose Laser Wraps Ke?</h1>
+    <h1 className="text-2xl font-bold mb-12">Why Choose Autowrapnshield?</h1>
 
     <div className="flex flex-wrap justify-center gap-20 max-w-6xl">
       <div className="max-w-sm">

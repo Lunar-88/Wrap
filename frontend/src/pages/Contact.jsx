@@ -22,14 +22,14 @@ function Contact() {
           <ul className="flex flex-col space-y-4">
             <li className="flex items-center gap-3 justify-center md:justify-start">
               <FontAwesomeIcon icon={faPhone} className="text-lg" />
-              <a href="tel:+254791011163" className="hover:text-green-400 transition">
-                +254791011163
+              <a href="tel:+254791775974" className="hover:text-green-400 transition">
+                +254791775974
               </a>
             </li>
             <li className="flex items-center gap-3 justify-center md:justify-start">
               <FontAwesomeIcon icon={faWhatsapp} className="text-[#25D366] text-lg" />
               <a
-                href="http://wa.me/message/F4J2J7A5B66GB1"
+                href="http://wa.me/message/0791775974"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -38,7 +38,7 @@ function Contact() {
             </li>
             <li className="flex items-center gap-3 justify-center md:justify-start">
               <FontAwesomeIcon icon={faEnvelope} className="text-lg" />
-              <a href="mailto:laserwrapske@gmail.com">laserwrapske@gmail.com</a>
+              <a href="mailt:autowrapnshield@gmail.com">autowrapnshield2gmail.com</a>
             </li>
           </ul>
         </div>

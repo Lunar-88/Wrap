@@ -18,15 +18,15 @@ function Footer() {
       <ul className="flex flex-col space-y-3">
         <li className="flex items-center gap-3 justify-center md:justify-start">
           <FontAwesomeIcon icon={faPhone} className="text-lg" />
-          <a href="tel:+254791011163" className="hover:text-green-400 transition">+254791011163</a>
+          <a href="tel:+254791775974" className="hover:text-green-400 transition">+254791775974</a>
         </li>
         <li className="flex items-center gap-3 justify-center md:justify-start">
           <FontAwesomeIcon icon={faWhatsapp} className="text-[#25D366] text-lg" />
-          <a href="http://wa.me/message/F4J2J7A5B66GB1" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+          <a href="http://wa.me/message/0791775974" target="_blank" rel="noopener noreferrer">WhatsApp</a>
         </li>
         <li className="flex items-center gap-3 justify-center md:justify-start">
           <FontAwesomeIcon icon={faEnvelope} className="text-lg" />
-          <a href="mailto:laserwrapske@gmail.com">laserwrapske@gmail.com</a>
+          <a href="mailto:autowrapnshield@gmail.com">autowrapnshield@gmail.com</a>
         </li>
       </ul>
     </div>
@@ -51,7 +51,7 @@ function Footer() {
         <a href="https://www.facebook.com/share/1HFPdp7c38/?mibextid=wwXIfr" className="text-sky-500 hover:text-gray-400" target="_blank" rel="noopener noreferrer">
           <FontAwesomeIcon icon={faFacebook} size="lg" />
         </a>
-        <a href="https://www.instagram.com/laser_wrapske?igsh=MXZoa2RxbWkzNWlraA==" className="text-[#FF69B4] hover:text-[#FFC0CB]" target="_blank" rel="noopener noreferrer">
+        <a href="https://www.instagram.com/autowrapnshield?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" className="text-[#FF69B4] hover:text-[#FFC0CB]" target="_blank" rel="noopener noreferrer">
           <FontAwesomeIcon icon={faInstagram} size="lg" />
         </a>
         <a href="https://x.com/customz2676035?s=21" className="text-sky-400 hover:text-gray-400" target="_blank" rel="noopener noreferrer">
@@ -69,7 +69,7 @@ function Footer() {
 
   {/* Footer Bottom Bar */}
   <div className="bg-[#333333] flex flex-col md:flex-row items-center justify-center gap-4 py-3 px-4 text-sm text-center">
-    <p>© 2023 Laser Wraps Ke. All rights reserved.</p>
+    <p>© 2023 Autowrapnshield. All rights reserved.</p>
     <p>
       Developed by{' '}
       <a href="https://www.linkedin.com/in/felix-kemboi-33b757369?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" className="text-sky-500 font-bold">

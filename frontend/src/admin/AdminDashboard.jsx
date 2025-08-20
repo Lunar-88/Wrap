@@ -100,7 +100,7 @@ function AdminDashboard() {
   )}
 </div>
       <div className="mt-6 text-center text-gray-500">
-        <p>Admin Dashboard - Laser Wraps Booking System</p>
+        <p>Admin Dashboard - Autowrapnshield Booking System</p>
         <p>© {new Date().getFullYear()} Laser Wraps</p>
       </div>
     </div>
